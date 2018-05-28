@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     int y = 1;
     Double x, sum = 0.0,sofi=0.0;
-    String st1,st2;
+    String st1,st2,st3;
     EditText et;
 
     @Override
@@ -260,12 +260,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void credit(View view) {
         Intent credit = new Intent(this, Credit.class);
+
         st2 = Double.toString(sofi);
         credit.putExtra("scum", st2);
-        startActivity(credit);
+        startActivityForResult(credit, 1);
 
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if((data!=null)&&(resultCode==1)){
+            st3 = data.getStringExtra("scum");
+
+
+
+        }
     }
 }
 
